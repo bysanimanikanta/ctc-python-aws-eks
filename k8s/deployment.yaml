@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-aws-eks-deployment
+  labels:
+    app: python-aws-eks
+  namespace: REPLACEME
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-aws-eks
+  template:
+    metadata:
+      labels:
+        app: python-aws-eks
+    spec:
+      containers:
+        - name: python-aws-eks
+          image: REPLACEDOCKERIMAGE
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: python-aws-eks-config
