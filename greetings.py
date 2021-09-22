@@ -3,8 +3,10 @@ from flask_restplus import Resource, Api
 
 import sys
 import logging
+import os
 
 app = Flask(__name__)
+MESSAGE_FROM = os.environ["MESSAGE_FROM"]
 api = Api(app, prefix="/labday", title="CTC Lab Day")
 ns = api.namespace("")
 logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -18,7 +20,7 @@ class Greetings(Resource):
             logging.info("Request received")
             return {
                 "status": "success",
-                "message": "Message from AWS: Hello, this is CTC Lab day!!! "
+                "message": "Message from " + MESSAGE_FROM + ": Hello, this is CTC Lab day!!! "
             }, 200
         except Exception:
             return {
