@@ -9,6 +9,7 @@ api = Api(app, prefix="/labday", title="CTC Lab Day")
 ns = api.namespace("")
 logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+
 @ns.route("/greet")
 class Greetings(Resource):
     def get(self):
