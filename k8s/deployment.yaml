@@ -20,7 +20,7 @@ spec:
           image: REPLACEDOCKERIMAGE
           imagePullPolicy: Always
           ports:
-            - containerPort: 5000
+            - containerPort: 8087
           envFrom:
             - configMapRef:
                 name: python-aws-eks-config
