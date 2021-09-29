@@ -18,6 +18,7 @@ spec:
       containers:
         - name: python-aws-eks
           image: REPLACEDOCKERIMAGE
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
           envFrom:
