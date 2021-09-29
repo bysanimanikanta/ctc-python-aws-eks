@@ -24,4 +24,4 @@ spec:
               service:
                 name: python-aws-eks-service
                 port:
-                  number: 8086
+                  number: 5000

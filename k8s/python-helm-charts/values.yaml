@@ -18,8 +18,8 @@ podAnnotations: {}
 
 service:
   type: NodePort
-  port: 8086
-  targetPort: 8086
+  port: 5000
+  targetPort: 5000
 
 ingress:
   enabled: true
