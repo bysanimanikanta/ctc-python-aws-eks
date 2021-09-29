@@ -6,21 +6,21 @@ import logging
 import os
 
 app = Flask(__name__)
-MESSAGE_FROM = os.environ["MESSAGE_FROM"]
+MESSAGE_FROM = os.environ["MESSAGE_FROM", "DEFAULT"]
 api = Api(app, prefix="/labday", title="CTC Lab Day")
 ns = api.namespace("")
 logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-@ns.route("/greet")
+@ns.route("/greetings")
 class Greetings(Resource):
     def get(self):
         """Greet with a message"""
         try:
-            logging.info("Request received")
+            logging.info("Message from " + MESSAGE_FROM + ": Hello Python Lovers, this is CTC Lab day!!!")
             return {
                 "status": "success",
-                "message": "Message from " + MESSAGE_FROM + ": Hello, this is CTC Lab day!!! "
+                "message": "Message from " + MESSAGE_FROM + ": Hello Python Lovers, this is CTC Lab day!!!"
             }, 200
         except Exception:
             return {

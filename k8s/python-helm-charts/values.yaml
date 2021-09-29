@@ -1,4 +1,4 @@
-# Default values for java-springboot-helm-templates.
+# Default values for python-helm-templates.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -11,8 +11,8 @@ image:
   tag: "0.0.5-SNAPSHOT"
 
 imagePullSecrets: []
-nameOverride: "spring-aws-eks"
-fullnameOverride: "spring-aws-eks"
+nameOverride: "python-aws-eks"
+fullnameOverride: "python-aws-eks"
 
 podAnnotations: {}
 
@@ -45,7 +45,7 @@ autoscaling:
   enabled: true
   minReplicas: 1
   maxReplicas: 3
-  targetCPUUtilizationPercentage: 25
+  targetCPUUtilizationPercentage: 20
 
 nodeSelector: {}
 

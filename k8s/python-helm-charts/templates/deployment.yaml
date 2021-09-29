@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "java-springboot-helm-charts.fullname" . }}-deployment
-  labels: {{- include "java-springboot-helm-charts.labels" . | nindent 4 }}
+  name: {{ include "python-helm-charts.fullname" . }}-deployment
+  labels: {{- include "python-helm-charts.labels" . | nindent 4 }}
   namespace: {{ .Release.Namespace }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
@@ -14,11 +14,11 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "java-springboot-helm-charts.selectorLabels" . | nindent 8 }}
+        {{- include "python-helm-charts.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Release.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.port }}
@@ -29,4 +29,4 @@ spec:
               cpu: "500m"
           envFrom:
             - configMapRef:
-                name: {{ include "java-springboot-helm-charts.fullname" . }}-config
+                name: {{ include "python-helm-charts.fullname" . }}-config
