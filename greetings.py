@@ -6,7 +6,7 @@ import logging
 import os
 
 app = Flask(__name__)
-MESSAGE_FROM = os.environ["MESSAGE_FROM", "DEFAULT"]
+MESSAGE_FROM = os.environ.get("MESSAGE_FROM", "DEFAULT")
 api = Api(app, prefix="/labday", title="CTC Lab Day")
 ns = api.namespace("")
 logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
